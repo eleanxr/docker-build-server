@@ -16,4 +16,4 @@ USER dev
 WORKDIR /home/dev
 
 ENTRYPOINT [ "/home/dev/bin/entrypoint.bash" ]
-CMD []
+CMD ["run"]

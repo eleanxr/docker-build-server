@@ -2,17 +2,46 @@
 
 command="$1"
 
-if [[ ! "$command" == "bash" ]]; then
+shift
+
+function run_build {
+  if [[ $# < 1 || -z "$1" ]]; then
+    echo "Repository URL required."
+    exit 1
+  fi
+
+  repo="$1"
 
   mkdir -p $HOME/code && cd $HOME/code
 
-  git clone https://github.com/wdicharry/xdm
+  checkout_directory="source"
 
-  mkdir build-debug && cd build-debug
+  git clone "$repo" "$checkout_directory"
 
-  cmake -DCMAKE_BUILD_TYPE=Debug ../xdm
+  pushd "$checkout_directory"
+  git submodule update --init
+  popd
+
+  mkdir -p build-debug && cd build-debug
+
+  cmake -DCMAKE_BUILD_TYPE=debug ../"$checkout_directory"
 
   make
-else
+}
+
+function start_shell {
   exec /bin/bash
-fi
+}
+
+case "$command" in
+  build)
+    run_build "$1"
+    ;;
+  bash)
+    start_shell
+    ;;
+  *)
+    echo "Usage: $0 (build|bash)"
+    exit 1
+    ;;
+esac
