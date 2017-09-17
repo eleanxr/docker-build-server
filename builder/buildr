@@ -1,7 +1,7 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
 import builder.simple
 
 import sys
 
-builder.simple("https://github.com/wdicharry/xdm.git")
+builder.simple.run_build("https://github.com/wdicharry/xdm.git")
