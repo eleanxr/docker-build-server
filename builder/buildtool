@@ -4,4 +4,12 @@ import builder.simple
 
 import sys
 
-builder.simple.run_build("https://github.com/wdicharry/xdm.git")
+def main():
+    if len(sys.argv) < 2:
+        print "Usage %s <repository-url>" % (sys.argv[0])
+        sys.exit(1)
+    repository_url = sys.argv[1]
+    builder.simple.run_build(repository_url)
+
+if __name__ == "__main__":
+    main()
