@@ -1,0 +1,7 @@
+#!/usr/bin/env python3
+
+import builder.simple
+
+import sys
+
+builder.simple("https://github.com/wdicharry/xdm.git")
