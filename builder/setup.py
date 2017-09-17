@@ -6,5 +6,5 @@ setup(
     author = "Will Dicharry",
     license = "BSD",
     packages = ["builder"],
-    scripts = ["buildr"]
+    scripts = ["buildtool"]
 )
