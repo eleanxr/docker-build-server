@@ -14,7 +14,7 @@ function start_shell {
 
 case "$command" in
   build)
-    run_build "$1"
+    run_build $@
     ;;
   bash)
     start_shell
